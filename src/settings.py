@@ -1,0 +1,3 @@
+GRAVITY = 0.2
+
+# PLAYERS
