@@ -5,7 +5,8 @@ import src.game as game
 import src.inputHandler as inputHandler
 
 
-screen = pygame.display.set_mode([1920,1000])
+# screen = pygame.display.set_mode([1920,1000])
+screen = pygame.display.set_mode([1000,1000])
 pygame.display.set_caption('Berek')
 
 clock = pygame.time.Clock()
