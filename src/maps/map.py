@@ -4,6 +4,7 @@ from src.maps.drawMap1 import map1
 import src.characters.player as player
 import src.utils.maskUtils as maskUtils
 import src.characters.drawPlayer as drawPlayer
+import src.utils.writeUtils as writeUtils
 
 
 class CrateMap:
@@ -35,6 +36,7 @@ class CrateMap:
         screen.blit(self.frameSurface, (0,0))
 
     def run(self):
+        writeUtils.drawSign( screen )
         for p in self.players:
             p.run( self.mapSurfaceWithMask[1], self.mapPos )
             self.drawOnMap( p.characterSurface, p.pos)
