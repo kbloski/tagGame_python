@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys # type: ignore
 pygame.init()
 
 import utils.handlerUtils as handlerUtils
@@ -27,4 +27,4 @@ while True:
     appGame.run()
 
     pygame.display.flip()
-    pygame.draw.rect(screen, '#DDDDDD', [0,0,screen.get_width(), screen.get_height()])
+    screen.fill( '#99DD00')

@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 
 def isMasksColision( firstMask, firstPos, secondMask, secondPos):
     offset = [secondPos[0]-firstPos[0], secondPos[1]-firstPos[1]]

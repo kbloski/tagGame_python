@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 import utils.handlerUtils as inputHandler
 from utils.measurementUtils import roundNumber
 import settings.settings as settings

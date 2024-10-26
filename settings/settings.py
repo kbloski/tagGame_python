@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import pygame 
+import pygame  # type: ignore
 pygame.init()
 
 GRAVITY = 0.3

@@ -1,6 +1,6 @@
-import pygame
+import pygame # type: ignore
 from screen import screen
-from .drawMap1 import map1
+from .drawMap import map1
 import utils.surfaceUtils as surfaceUtils
 
 
