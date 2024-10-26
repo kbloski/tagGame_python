@@ -19,8 +19,8 @@ while True:
         if event.type == pygame.QUIT or pygame.key.get_pressed()[pygame.K_ESCAPE]:
             sys.exit()
 
-    clock.tick(fps)
-    # print(clock.get_fps())
+    # clock.tick(fps)
+    print(clock.get_fps())
     handlerUtils.keyboard['refresh']()
 
 

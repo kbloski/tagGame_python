@@ -8,6 +8,10 @@ from screen import screen
 
 class CreateGame:
     def __init__(self):
+        self.captions = {
+            'tagger' : writeUtils.createSignSurface("TagPlayer!", 16),
+            'title' : writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'),
+        }
         self.map = map
         self.players = [ 
                 player.Player(drawPlayer.drawCharacter()),
@@ -27,24 +31,26 @@ class CreateGame:
         )
         self.players[1].setBoost()
         self.tagPlayerId = randomUtils.getRandomElFromArr(self.players).id
-        print( self.tagPlayerId)
 
-
-    def __drawTaggerSign(self, player, map):
+    def __drawTagerCaption(self, player, map):
         signPos = player.getCurrentPos()
         signPos[1] -= 25
-        signSurface = writeUtils.createSignSurface("Tagger!", 16)
-        self.map.drawOnMap( signSurface, signPos )
+        self.map.drawOnMap( self.captions['tagger'], signPos )
 
     def run(self):
-        writeUtils.drawSign( screen , 'Wersja testowa alfa aplikacji "Tag GAME"', [100,50])
+        screen.blit( self.captions['title'], [100,30])
 
         for p in self.players:
             p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )
             self.map.drawOnMap( p.characterSurface, p.pos)
 
             if self.tagPlayerId == p.getId():
-                self.__drawTaggerSign(p, map)
+                self.__drawTagerCaption(p, map)
+                for i in self.players:
+                    if i.id != p.id and p.colisionWithOtherMask(i.getCurrentMask(), i.getCurrentPos()):
+                        self.tagPlayerId = i.id
+
+
 
 
         self.map.run()
