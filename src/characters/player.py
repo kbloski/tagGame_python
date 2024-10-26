@@ -1,17 +1,29 @@
-import pygame
+import pygame, random
 import src.helpers.SurfaceHelper as SurfaceHelper
 import src.utils.inputHandler as inputHandler
 from src.utils.measurement_utils import roundNumber
 import src.settings as settings
 import src.utils.maskUtils as maskUtils
 
+
+
 class Player:
+    PLAYERID = 1
+    ACCELERATION = 0.05
+    JUMP_POWER = 12
+    MAX_SPEED = [4, 0]
+    BOOSTED_ACCELERATION = 0.06
+    BOOSTED_JUMP_POWER = 13
+    BOOSTED_MAX_SPEED = [4.2, 0]
+
     def __init__(self, characterSurface):
+        self.id = self.__getNewPlayerId()
+
         self.controlKeys = {
-            "UP" : pygame.K_UP,
-            "DOWN" : pygame.K_DOWN,
-            "LEFT" : pygame.K_LEFT,
-            "RIGHT" : pygame.K_RIGHT
+            "UP" : pygame.K_ESCAPE,
+            "DOWN" : pygame.K_ESCAPE,
+            "LEFT" : pygame.K_ESCAPE,
+            "RIGHT" : pygame.K_ESCAPE
         }
 
         self.__characterSurfaceWithMask = [ characterSurface, maskUtils.getMaskFromSurface(characterSurface) ]
@@ -19,12 +31,17 @@ class Player:
 
         self.pos = [500,500]
         self.moveDirection = [0, 0]
-        self.acceleration = 0.05
-        self.jumpPower = 12
+        self.acceleration = self.ACCELERATION
+        self.jumpPower = self.JUMP_POWER
         self.speed = [0, 0]
-        self.maxSpeed = [4, 5]
+        self.maxSpeed = self.MAX_SPEED
+    
+    def __getNewPlayerId(self):
+        newId = self.PLAYERID
+        Player.PLAYERID += 1
+        return newId
 
-    def setDirection(self):
+    def __setDirection(self):
         keys = inputHandler.keyboard['keys']
 
         # Change direction
@@ -44,8 +61,8 @@ class Player:
         if self.speed[1] <= 0 and self.moveDirection[1]:
             self.moveDirection[1] = 0
 
-    def move(self, mapMask, mapPos):
-        self.setDirection()
+    def __move(self, mapMask, mapPos):
+        self.__setDirection()
         keys = inputHandler.keyboard['keys']
 
         # RESET SPEED
@@ -108,6 +125,31 @@ class Player:
 
     def colisionWithMask( self, mask, pos):
         return maskUtils.isMasksColision(self.__characterSurfaceWithMask[1], self.pos, mask, pos)
+    
+    def setControlKeys(
+            self, 
+            LEFT = pygame.K_LEFT, 
+            RIGHT =  pygame.K_RIGHT,
+            UP = pygame.K_UP, 
+            DOWN = pygame.K_DOWN , 
+        ):
+        self.controlKeys = {
+            "UP" : UP,
+            "DOWN" : DOWN,
+            "LEFT" : LEFT,
+            "RIGHT" : RIGHT
+        }
+
+    def setBoost(self):
+        self.maxSpeed = self.BOOSTED_MAX_SPEED
+        self.jumpPower = self.BOOSTED_JUMP_POWER
+        self.acceleration = self.BOOSTED_ACCELERATION
+
+    def removeBost(self):
+        self.maxSpeed = self.MAX_SPEED
+        self.jumpPower = self.JUMP_POWER
+        self.acceleration = self.ACCELERATION
+
 
     def run(self, mapMask, mapPos):
-        self.move( mapMask, mapPos )
+        self.__move( mapMask, mapPos )

@@ -23,6 +23,7 @@ while True:
     # print(clock.get_fps())
     inputHandler.keyboard['refresh']()
 
+
     appGame.run()
 
     pygame.display.flip()
