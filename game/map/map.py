@@ -1,9 +1,7 @@
 import pygame
 from screen import screen
-from game.maps.drawMap1 import map1
-import game.characters.player as player
+from .drawMap1 import map1
 import utils.surfaceUtils as surfaceUtils
-import game.characters.drawPlayer as drawPlayer
 
 
 class CrateMap:
@@ -14,15 +12,7 @@ class CrateMap:
             surfaceUtils.getMaskFromSurface(mapSurface)
         ]
         self.mapPos = [0,0]
-
-        self.players = [ 
-                player.Player(drawPlayer.drawCharacter()),
-                player.Player(drawPlayer.drawCharacter()),
-            ]
-        self.players[0].setControlKeys(pygame.K_LEFT, pygame.K_RIGHT, pygame.K_UP, pygame.K_DOWN)
-        self.players[1].setControlKeys( pygame.K_a, pygame.K_d, pygame.K_w, pygame.K_s)
-        self.players[1].setBoost()
-
+       
     def __newFrame(self):
         self.frameSurface = pygame.Surface( screen.get_size()).convert_alpha()
         self.frameSurface.fill( (0,0,0,0) )
@@ -35,14 +25,7 @@ class CrateMap:
         screen.blit(self.frameSurface, (0,0))
 
     def run(self):
-        
-        for p in self.players:
-            p.run( self.mapSurfaceWithMask[1], self.mapPos )
-            self.drawOnMap( p.characterSurface, p.pos)
-
         self.drawMapOnScreen()
         self.__newFrame()
-
-        
 
 map = CrateMap(map1.getMapSurface())
