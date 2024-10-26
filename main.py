@@ -2,11 +2,11 @@ import pygame, sys
 pygame.init()
 
 import src.game as game
-import src.inputHandler as inputHandler
+import src.utils.inputHandler as inputHandler
+from screen import screen
 
 
-# screen = pygame.display.set_mode([1920,1000])
-screen = pygame.display.set_mode([1000,1000])
+
 pygame.display.set_caption('Berek')
 
 clock = pygame.time.Clock()
@@ -20,9 +20,9 @@ while True:
             sys.exit()
 
     clock.tick(fps)
+    # print(clock.get_fps())
     inputHandler.keyboard['refresh']()
 
-    # print(clock.get_fps())
     appGame.run()
 
     pygame.display.flip()
