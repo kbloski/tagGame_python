@@ -1,9 +1,8 @@
-import pygame, random
-import src.helpers.SurfaceHelper as SurfaceHelper
-import src.utils.inputHandler as inputHandler
-from src.utils.measurement_utils import roundNumber
-import src.settings as settings
-import src.utils.maskUtils as maskUtils
+import pygame
+import utils.handlerUtils as inputHandler
+from utils.measurementUtils import roundNumber
+import settings.settings as settings
+import utils.surfaceUtils as surfaceUtils
 
 
 
@@ -26,7 +25,7 @@ class Player:
             "RIGHT" : pygame.K_ESCAPE
         }
 
-        self.__characterSurfaceWithMask = [ characterSurface, maskUtils.getMaskFromSurface(characterSurface) ]
+        self.__characterSurfaceWithMask = [ characterSurface, surfaceUtils.getMaskFromSurface(characterSurface) ]
         self.characterSurface = self.__characterSurfaceWithMask[0]
 
         self.pos = [500,500]
@@ -124,7 +123,7 @@ class Player:
         return result
 
     def colisionWithMask( self, mask, pos):
-        return maskUtils.isMasksColision(self.__characterSurfaceWithMask[1], self.pos, mask, pos)
+        return surfaceUtils.isMasksColision(self.__characterSurfaceWithMask[1], self.pos, mask, pos)
     
     def setControlKeys(
             self, 

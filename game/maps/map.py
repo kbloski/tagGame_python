@@ -1,10 +1,9 @@
 import pygame
 from screen import screen
-from src.maps.drawMap1 import map1
-import src.characters.player as player
-import src.utils.maskUtils as maskUtils
-import src.characters.drawPlayer as drawPlayer
-import src.utils.writeUtils as writeUtils
+from game.maps.drawMap1 import map1
+import game.characters.player as player
+import utils.surfaceUtils as surfaceUtils
+import game.characters.drawPlayer as drawPlayer
 
 
 class CrateMap:
@@ -12,7 +11,7 @@ class CrateMap:
         self.frameSurface = pygame.Surface( screen.get_size())
         self.mapSurfaceWithMask = [ 
             mapSurface, 
-            maskUtils.getMaskFromSurface(mapSurface)
+            surfaceUtils.getMaskFromSurface(mapSurface)
         ]
         self.mapPos = [0,0]
 
@@ -36,7 +35,7 @@ class CrateMap:
         screen.blit(self.frameSurface, (0,0))
 
     def run(self):
-        writeUtils.drawSign( screen )
+        
         for p in self.players:
             p.run( self.mapSurfaceWithMask[1], self.mapPos )
             self.drawOnMap( p.characterSurface, p.pos)
