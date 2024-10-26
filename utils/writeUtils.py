@@ -17,14 +17,14 @@ def drawSign(
     textSurface = font.render( text, antyaliansing, color)
     surface.blit( textSurface, pos)
 
-def createSignFunc( 
+def createSignSurface( 
         text='text-sign', 
         signHeight= DEFAULT_SIGN_SIZE, 
         color='#000000', 
         fontFamily = "Arial", 
         antyaliansing=True
     ):
-    font = pygame.font.Font(fontFamily, signHeight)
+    font = pygame.font.Font(pygame.font.match_font(fontFamily), signHeight)
     textSurface = font.render( text, antyaliansing, color)
     return textSurface
 
@@ -49,7 +49,7 @@ class CreateSign:
         self.img = font.render(text,antyaliansing,color)
 
     def __createSign(self):
-        font = pygame.font.Font( self.fontFamily, self.signHeight)
+        font = pygame.font.Font( pygame.font.match_font(self.fontFamily), self.signHeight)
         self.surface = font.render( self.innerText, self.antyaliansing, self.color )
         
     def draw(self, surface):

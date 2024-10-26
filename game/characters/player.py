@@ -82,13 +82,13 @@ class Player:
 
         # COLISION UP
         newMapPos = [mapPos[0], mapPos[1] + self.speed[1]]
-        if (self.colisionWithMask(mapMask, newMapPos) and self.moveDirection[1] == -1):
+        if (self.colisionWithOtherMask(mapMask, newMapPos) and self.moveDirection[1] == -1):
             self.moveDirection[1] = 1
 
 
         # GRAVITY
         newMapPos = [mapPos[0], mapPos[1] - self.speed[1]]
-        if (not self.colisionWithMask(mapMask, newMapPos)):
+        if (not self.colisionWithOtherMask(mapMask, newMapPos)):
             if not self.moveDirection[1]:
                 self.moveDirection[1] = 1
             if self.moveDirection[1] == 1:
@@ -115,14 +115,14 @@ class Player:
     def __colisionWithMap(self, mapMask, mapPos):
         result = [False, False]
         nextMapPosX = [ mapPos[0] - self.speed[0] * self.moveDirection[0], mapPos[1] ]
-        if (self.colisionWithMask(mapMask, nextMapPosX)):
+        if (self.colisionWithOtherMask(mapMask, nextMapPosX)):
             result[0] = True
         nextMapPosY = [mapPos[0] , mapPos[1] - self.speed[1] * self.moveDirection[1] ]
-        if (self.colisionWithMask(mapMask, nextMapPosY)):
+        if (self.colisionWithOtherMask(mapMask, nextMapPosY)):
             result[1] = True
         return result
 
-    def colisionWithMask( self, mask, pos):
+    def colisionWithOtherMask( self, mask, pos):
         return surfaceUtils.isMasksColision(self.__characterSurfaceWithMask[1], self.pos, mask, pos)
     
     def setControlKeys(
@@ -149,6 +149,14 @@ class Player:
         self.jumpPower = self.JUMP_POWER
         self.acceleration = self.ACCELERATION
 
+    def getCurrentMask(self):
+        return self.__characterSurfaceWithMask[1]
+
+    def getCurrentPos(self):
+        return  self.pos.copy()
+    
+    def getId(self):
+        return self.id
 
     def run(self, mapMask, mapPos):
         self.__move( mapMask, mapPos )

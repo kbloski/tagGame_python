@@ -1,5 +1,6 @@
 import pygame # type: ignore
 import utils.writeUtils as writeUtils
+import utils.randomUtils as randomUtils
 import game.characters.player as player
 import game.characters.drawPlayer as drawPlayer
 from game.map.map import map 
@@ -25,7 +26,15 @@ class CreateGame:
             pygame.K_s
         )
         self.players[1].setBoost()
+        self.tagPlayerId = randomUtils.getRandomElFromArr(self.players).id
+        print( self.tagPlayerId)
 
+
+    def __drawTaggerSign(self, player, map):
+        signPos = player.getCurrentPos()
+        signPos[1] -= 25
+        signSurface = writeUtils.createSignSurface("Tagger!", 16)
+        self.map.drawOnMap( signSurface, signPos )
 
     def run(self):
         writeUtils.drawSign( screen , 'Wersja testowa alfa aplikacji "Tag GAME"', [100,50])
@@ -33,6 +42,10 @@ class CreateGame:
         for p in self.players:
             p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )
             self.map.drawOnMap( p.characterSurface, p.pos)
+
+            if self.tagPlayerId == p.getId():
+                self.__drawTaggerSign(p, map)
+
 
         self.map.run()
     
