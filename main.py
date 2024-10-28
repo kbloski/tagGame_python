@@ -2,6 +2,7 @@ import pygame, sys # type: ignore
 pygame.init()
 
 import utils.handlerUtils as handlerUtils
+from utils.clock import CreateClock
 import game.game_manager as game
 from screen import screen
 
@@ -9,7 +10,7 @@ from screen import screen
 
 pygame.display.set_caption('Berek')
 
-clock = pygame.time.Clock()
+gameClock = pygame.time.Clock()
 fps = 120
 
 appGame = game.CreateGame()
@@ -19,10 +20,11 @@ while True:
         if event.type == pygame.QUIT or pygame.key.get_pressed()[pygame.K_ESCAPE]:
             sys.exit()
 
-    # clock.tick(fps)
-    print(clock.get_fps())
+    gameClock.tick(fps)
+    # print(gameClock.get_fps())
     handlerUtils.keyboard['refresh']()
 
+    CreateClock.increment( gameClock.get_time())
 
     appGame.run()
 
