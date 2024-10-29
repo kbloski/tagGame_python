@@ -139,7 +139,7 @@ class Player:
             "RIGHT" : RIGHT
         }
 
-    def setBoost(self):
+    def addBoost(self):
         self.maxSpeed = self.BOOSTED_MAX_SPEED
         self.jumpPower = self.BOOSTED_JUMP_POWER
         self.acceleration = self.BOOSTED_ACCELERATION
