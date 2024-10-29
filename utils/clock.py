@@ -8,7 +8,7 @@ class CreateClock:
     def __init__(self):
         self.__WATCHERS.append( self )
         self.isActive = False
-        self.isReady = False
+        #TODO self.isReady = True 
         self.__currentTime = 0
         self.countdown_seconds = 999_999_999
 
@@ -20,9 +20,6 @@ class CreateClock:
             if watch.isActive:
                 watch.__currentTime += tickMiliseconds
     
-    # def __getCurrentGameTime(self):
-    #     return roundNumber( self.__CURRENT_GAME_TIME / 1000 )
-    
     def getTime(self):
         return roundNumber( self.__currentTime / 1000 )
 
@@ -31,7 +28,7 @@ class CreateClock:
 
     def reset( self ):
         self.__currentTime = 0
-        self.isReady = True
+        self.isActive = False
 
     def start( self):
         self.isActive = True

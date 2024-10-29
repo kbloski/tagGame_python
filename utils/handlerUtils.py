@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 
 def updateKeysInKeyboard():
     keyboard['keys'] = pygame.key.get_pressed()

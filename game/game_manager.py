@@ -1,6 +1,7 @@
 import pygame # type: ignore
 import utils.writeUtils as writeUtils
 import utils.randomUtils as randomUtils
+from utils.clock import CreateClock
 import game.characters.player as player
 import game.characters.drawPlayer as drawPlayer
 from game.map.map import map 
@@ -30,7 +31,17 @@ class CreateGame:
             pygame.K_s
         )
         self.players[1].setBoost()
+
+        self.taggerClock = CreateClock()
+        self.taggerClock.setCountdown(10)
+        self.taggerClock.start()
         self.tagPlayerId = randomUtils.getRandomElFromArr(self.players).id
+
+    def __setTagger(self, playerId):
+        self.taggerClock.reset()
+        self.taggerClock.start()
+        self.tagPlayerId = playerId
+
 
     def __drawTagerCaption(self, player, map):
         signPos = player.getCurrentPos()
@@ -47,8 +58,10 @@ class CreateGame:
             if self.tagPlayerId == p.getId():
                 self.__drawTagerCaption(p, map)
                 for i in self.players:
-                    if i.id != p.id and p.colisionWithOtherMask(i.getCurrentMask(), i.getCurrentPos()):
-                        self.tagPlayerId = i.id
+                    if self.taggerClock.hasEnded():
+                        if i.id != p.id and p.colisionWithOtherMask(i.getCurrentMask(), i.getCurrentPos()):
+                            # self.tagPlayerId = i.id
+                            self.__setTagger( i.id )
 
 
 
