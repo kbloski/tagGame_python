@@ -1,3 +1,4 @@
+from utils.viewManager import viewManager
 from config.screen import screen
 from utils import writeUtils
 from .players import ModuleGamePlayers
@@ -5,7 +6,8 @@ from .caption import ModuleGameCaptions
 from .timmer import ModuleGameTimmer
 from .map import MAP1
 
-class CreateGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
+
+class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
     def __init__(self):
         super().__init__()
 

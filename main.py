@@ -1,13 +1,12 @@
 import pygame, sys # type: ignore
 pygame.init()
 
+import view
 import utils.handlerUtils as handlerUtils
 from utils.clock import CreateClock
-from config.screen import screen
-from ui.view_manager import ViewManager
+from utils.viewManager import viewManager
 
 pygame.display.set_caption('Berek')
-view = ViewManager()
 
 clock = pygame.time.Clock()
 fps = 120
@@ -20,10 +19,6 @@ while True:
     clock.tick(fps)
     # print(gameClock.get_fps())
     handlerUtils.keyboard['refresh']()
-
-    view.render()
-
-    CreateClock.increment( clock.get_time())
-
-    pygame.display.flip()
-    screen.fill( '#99DD00')
+    viewManager.render()
+    CreateClock.increment( clock.get_time()) 
+    
