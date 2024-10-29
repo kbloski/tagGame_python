@@ -1,10 +1,10 @@
 import pygame
 from screen import screen
 
-class MapSurfaceControl:
-    def __init__(self):
-        self.WIDTH = screen.get_width()
-        self.HEIGHT = screen.get_height()
+class CreateMapSurface:
+    def __init__(self, width, height):
+        self.WIDTH = width
+        self.HEIGHT = height
         self.mapSurface = pygame.Surface( (self.WIDTH, self.HEIGHT) ).convert_alpha()
         self.mapSurface.fill((0,0,0,0))
     
@@ -24,7 +24,6 @@ class MapSurfaceControl:
         return self.mapSurface
 
 
-map1 = MapSurfaceControl()
-map1.createRamp(100,900, 300,5)
-map1.createRamp(300,700, 20,3)
+# map1.createRamp(100,900, 300,5)
+# map1.createRamp(300,700, 20,3)
 

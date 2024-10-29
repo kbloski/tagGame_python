@@ -1,11 +1,10 @@
 import pygame # type: ignore
 from screen import screen
-from .drawMap import map1
 import utils.surfaceUtils as surfaceUtils
 
-
-class CrateMap:
+class CreateMap:
     def __init__(self, mapSurface):
+        self.mapIsReady = False
         self.frameSurface = pygame.Surface( screen.get_size())
         self.mapSurfaceWithMask = [ 
             mapSurface, 
@@ -28,4 +27,3 @@ class CrateMap:
         self.drawMapOnScreen()
         self.__newFrame()
 
-map = CrateMap(map1.getMapSurface())

@@ -3,7 +3,7 @@ pygame.init()
 
 import utils.handlerUtils as handlerUtils
 from utils.clock import CreateClock
-import game.game_manager as game
+import game.game_manager.main_game as game
 from screen import screen
 
 pygame.display.set_caption('Berek')

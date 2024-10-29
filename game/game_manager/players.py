@@ -1,17 +1,10 @@
 import pygame # type: ignore
-import utils.writeUtils as writeUtils
 import utils.randomUtils as randomUtils
 from utils.clock import CreateClock
 import game.characters.player as player
 import game.characters.drawPlayer as drawPlayer
-from game.map.map import map 
-from screen import screen
-
-
-class ModuleGameCaptions:
-    CAPTIONS = {}
-    def addCaption(self, name = 'caption-name', surface = pygame.surface ):
-        self.CAPTIONS[name] = surface
+import utils.writeUtils as writeUtils
+from .caption import ModuleGameCaptions
 
 class ModuleGamePlayers( ModuleGameCaptions ):
     PLAYERS =  [ 
@@ -72,28 +65,3 @@ class ModuleGamePlayers( ModuleGameCaptions ):
         signPos = player.getCurrentPos()
         signPos[1] -= 25
         map.drawOnMap( self.CAPTIONS['tagCaption'], signPos )
-
-
-class CreateGame( ModuleGamePlayers, ModuleGameCaptions):
-    def __init__(self):
-        super().__init__()
-
-        self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
-        
-        self.map = map
-
-    def run(self):
-        screen.blit( self.CAPTIONS['title'], [100,30])
-
-        for p in self.PLAYERS:
-            p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )
-            self.map.drawOnMap( p.characterSurface, p.pos)
-
-            if self.tagPlayerId == p.getId():
-                self._drawTagerCaption(p, map)
-                for i in self.PLAYERS:
-                    if self.taggerClock.hasEnded():
-                        if i.id != p.id and p.colisionWithOtherMask(i.getCurrentMask(), i.getCurrentPos()):
-                            self._setNewTagger( i.id )
-        self.map.run()
-    
