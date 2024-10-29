@@ -1,26 +1,36 @@
 from .measurementUtils import roundNumber
 
 class CreateClock:
-    __CURRENTGAMETIME = 0
+    __CURRENT_GAME_TIME = 0
+    __CURRENT_TICK = 0
+    __WATCHERS = []
 
     def __init__(self):
+        self.__WATCHERS.append( self )
         self.isActive = False
         self.isReady = False
-        self.currentTime = 0
+        self.__currentTime = 0
         self.countdown_seconds = 999_999_999
 
     @classmethod
     def increment(self, tickMiliseconds):
-        CreateClock.__CURRENTGAMETIME += tickMiliseconds
+        CreateClock.__CURRENT_TICK = tickMiliseconds
+        CreateClock.__CURRENT_GAME_TIME += tickMiliseconds
+        for watch in self.__WATCHERS:
+            if watch.isActive:
+                watch.__currentTime += tickMiliseconds
     
-    def __getCurrentTime(self):
-        return roundNumber( self.__CURRENTGAMETIME / 1000 )
+    # def __getCurrentGameTime(self):
+    #     return roundNumber( self.__CURRENT_GAME_TIME / 1000 )
     
+    def getTime(self):
+        return roundNumber( self.__currentTime / 1000 )
+
     def setCountdown(self, seconds = 999_999_999):
-        self.countdown_seconds = seconds
+        self.countdown_seconds = seconds * 1000
 
     def reset( self ):
-        self.currentTime = 0
+        self.__currentTime = 0
         self.isReady = True
 
     def start( self):
@@ -30,8 +40,11 @@ class CreateClock:
         self.isActive = False
 
     def hasEnded(self):
-        if (self.countdown_seconds <= self.currentTime):
+        self.__currentTime += self.__CURRENT_TICK
+
+        if (self.countdown_seconds <= self.__currentTime):
             self.isActive = False
             return True
         return False
     
+
