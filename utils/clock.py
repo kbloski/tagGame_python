@@ -10,7 +10,7 @@ class CreateClock:
         self.isActive = False
         #TODO self.isReady = True 
         self.__currentTime = 0
-        self.countdown_seconds = 999_999_999
+        self.__countdown_seconds = 999_999_999
 
     @classmethod
     def increment(self, tickMiliseconds):
@@ -23,8 +23,11 @@ class CreateClock:
     def getTime(self):
         return roundNumber( self.__currentTime / 1000 )
 
+    def getCountdownTime(self):
+        return roundNumber( self.__countdown_seconds - self.getTime() )
+
     def setCountdown(self, seconds = 999_999_999):
-        self.countdown_seconds = seconds * 1000
+        self.__countdown_seconds = seconds 
 
     def reset( self ):
         self.__currentTime = 0
@@ -39,7 +42,7 @@ class CreateClock:
     def hasEnded(self):
         self.__currentTime += self.__CURRENT_TICK
 
-        if (self.countdown_seconds <= self.__currentTime):
+        if (self.__countdown_seconds <= self.getTime()):
             self.isActive = False
             return True
         return False

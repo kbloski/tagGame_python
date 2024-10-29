@@ -1,19 +1,24 @@
-import utils.writeUtils as writeUtils
-from .map import MAP1
 from screen import screen
+from utils import writeUtils
 from .players import ModuleGamePlayers
 from .caption import ModuleGameCaptions
+from .timmer import ModuleGameTimmer
+from .map import MAP1
 
-class CreateGame( ModuleGamePlayers, ModuleGameCaptions):
+class CreateGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
     def __init__(self):
         super().__init__()
 
         self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
-        
         self.map = MAP1
+
 
     def run(self):
         screen.blit( self.CAPTIONS['title'], [100,30])
+        self.drawTimmer()
+        # print( self.gameClock.getCountdownTime())
+        # writeUtils.drawSign( screen, str( self.gameClock.getCountdownTime() ), [50, 20])
+        # screen.blit( writeUtils.createSignSurface( self.gameClock.getCountdownTime() , 10))
 
         for p in self.PLAYERS:
             p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )

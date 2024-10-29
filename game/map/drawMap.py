@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 from screen import screen
 
 class CreateMapSurface:
@@ -22,8 +22,4 @@ class CreateMapSurface:
     def getMapSurface(self):
         self.__drawBorderMap()
         return self.mapSurface
-
-
-# map1.createRamp(100,900, 300,5)
-# map1.createRamp(300,700, 20,3)
 
