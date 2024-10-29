@@ -5,7 +5,7 @@ pygame.init()
 GRAVITY = 0.3
 
 # PLAYER CONTROLS COMBINATIONS
-PLAYER_CONTROLS_COMBINATIONS = [
+PLAYER_CONTROLS = [
     {
             "UP" : pygame.K_UP,
             "DOWN" : pygame.K_DOWN,
@@ -18,16 +18,4 @@ PLAYER_CONTROLS_COMBINATIONS = [
             "LEFT" : pygame.K_a,
             "RIGHT" : pygame.K_d
     },
-    # {
-    #         "UP" : pygame.K_ESCAPE,
-    #         "DOWN" : pygame.K_ESCAPE,
-    #         "LEFT" : pygame.K_ESCAPE,
-    #         "RIGHT" : pygame.K_ESCAPE
-    # },
-    # {
-    #         "UP" : pygame.K_ESCAPE,
-    #         "DOWN" : pygame.K_ESCAPE,
-    #         "LEFT" : pygame.K_ESCAPE,
-    #         "RIGHT" : pygame.K_ESCAPE
-    # },
 ]

@@ -1,7 +1,7 @@
 import pygame # type: ignore
 import utils.handlerUtils as inputHandler
 from utils.measurementUtils import roundNumber
-import settings.settings as settings
+from ..settings import settings
 import utils.surfaceUtils as surfaceUtils
 
 
@@ -127,17 +127,21 @@ class Player:
     
     def setControlKeys(
             self, 
-            LEFT = pygame.K_LEFT, 
-            RIGHT =  pygame.K_RIGHT,
-            UP = pygame.K_UP, 
-            DOWN = pygame.K_DOWN , 
+            controls = {
+                "UP" : None,
+                "DOWN" : None,
+                "LEFT" : None,
+                "RIGHT" : None,
+            },
         ):
-        self.controlKeys = {
-            "UP" : UP,
-            "DOWN" : DOWN,
-            "LEFT" : LEFT,
-            "RIGHT" : RIGHT
-        }
+        if controls["UP"]:
+            self.controlKeys['UP'] = controls["UP"]
+        if controls["DOWN"]:
+            self.controlKeys['DOWN'] = controls["DOWN"]
+        if controls["LEFT"]:
+            self.controlKeys['LEFT'] = controls["LEFT"]
+        if controls["RIGHT"]:
+            self.controlKeys['RIGHT'] = controls["RIGHT"]
 
     def addBoost(self):
         self.maxSpeed = self.BOOSTED_MAX_SPEED

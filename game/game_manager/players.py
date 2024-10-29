@@ -1,10 +1,10 @@
-import pygame # type: ignore
 import utils.randomUtils as randomUtils
 from utils.clock import CreateClock
 import game.characters.player as player
 import game.characters.drawPlayer as drawPlayer
 import utils.writeUtils as writeUtils
 from .caption import ModuleGameCaptions
+from ..settings import settings
 
 class ModuleGamePlayers( ModuleGameCaptions ):
     PLAYERS =  [ 
@@ -14,28 +14,22 @@ class ModuleGamePlayers( ModuleGameCaptions ):
     def __init__(self):
         super().__init__()
 
-        self.PLAYERS[0].setControlKeys(
-            pygame.K_LEFT, 
-            pygame.K_RIGHT, 
-            pygame.K_UP, 
-            pygame.K_DOWN
-        )
-        self.PLAYERS[1].setControlKeys( 
-            pygame.K_a, 
-            pygame.K_d, 
-            pygame.K_w, 
-            pygame.K_s
-        )
+        self.PLAYERS[0].setControlKeys( settings.PLAYER_CONTROLS[0] )
+        self.PLAYERS[1].setControlKeys( settings.PLAYER_CONTROLS[1] )
 
         self.addCaption(
             'tagCaption', writeUtils.createSignSurface("TagPlayer!", 16) 
         )
+
         self.taggerClock = CreateClock()
         self.taggerClock.setCountdown(3)
         self.taggerClock.start()
-        self.tagPlayerId = randomUtils.getRandomElFromArr(self.PLAYERS).id
-        tagPlayer = self._getPlayerById( self.tagPlayerId )
+        self.__tagPlayerId = randomUtils.getRandomElFromArr(self.PLAYERS).id
+        tagPlayer = self._getPlayerById( self.__tagPlayerId )
         tagPlayer.addBoost()
+
+    def getTagPlayerId(self):
+        return self.__tagPlayerId
 
     def _getPlayerById(self, id):
         for p in self.PLAYERS:
@@ -53,12 +47,19 @@ class ModuleGamePlayers( ModuleGameCaptions ):
         if player:
             player.removeBost()
 
+    def _checkCatchByTagger(self, player):
+        for i in self.PLAYERS:
+            if self.taggerClock.hasEnded():
+                if i.id != player.id and player.colisionWithOtherMask(i.getCurrentMask(), i.getCurrentPos()):
+                    self._setNewTagger( i.id )
+
+
     def _setNewTagger(self, playerId):
         self.taggerClock.reset()
         self.taggerClock.start()
-        tagPlayer = self._getPlayerById( self.tagPlayerId )
+        tagPlayer = self._getPlayerById( self.__tagPlayerId )
         tagPlayer.removeBost()
-        self.tagPlayerId = playerId
+        self.__tagPlayerId = playerId
         self._addBoost( playerId )
 
     def _drawTagerCaption(self, player, map):
