@@ -12,7 +12,7 @@ class CreateGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
         self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
         self.map = MAP1
 
-    def run(self):
+    def render(self):
         screen.blit( self.CAPTIONS['title'], [100,30])
         self.drawTimmer()
 
