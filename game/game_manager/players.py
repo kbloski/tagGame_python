@@ -4,7 +4,7 @@ import game.characters.player as player
 import game.characters.drawPlayer as drawPlayer
 import utils.writeUtils as writeUtils
 from .caption import ModuleGameCaptions
-from ..settings import settings
+from config import settings
 
 class ModuleGamePlayers( ModuleGameCaptions ):
     PLAYERS =  [ 
@@ -14,8 +14,8 @@ class ModuleGamePlayers( ModuleGameCaptions ):
     def __init__(self):
         super().__init__()
 
-        self.PLAYERS[0].setControlKeys( settings.PLAYER_CONTROLS[0] )
-        self.PLAYERS[1].setControlKeys( settings.PLAYER_CONTROLS[1] )
+        self.PLAYERS[0].setControlKeys( settings.PLAYER_CONTROLS[0]['keys'] )
+        self.PLAYERS[1].setControlKeys( settings.PLAYER_CONTROLS[1]['keys'] )
 
         self.addCaption(
             'tagCaption', writeUtils.createSignSurface("TagPlayer!", 16) 

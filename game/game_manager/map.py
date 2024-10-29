@@ -1,6 +1,6 @@
 from ..map.drawMap import CreateMapSurface
 from ..map.map import CreateMap
-from screen import screen
+from config.screen import screen
 
 SURFACE = CreateMapSurface(screen.get_width(), screen.get_height())
 SURFACE.createRamp( 400, 700, 150, 3)

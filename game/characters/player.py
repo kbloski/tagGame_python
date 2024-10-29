@@ -1,7 +1,7 @@
 import pygame # type: ignore
 import utils.handlerUtils as inputHandler
 from utils.measurementUtils import roundNumber
-from ..settings import settings
+from config import settings
 import utils.surfaceUtils as surfaceUtils
 
 

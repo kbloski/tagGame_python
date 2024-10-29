@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from screen import screen
+from config.screen import screen
 import utils.surfaceUtils as surfaceUtils
 
 class CreateMap:

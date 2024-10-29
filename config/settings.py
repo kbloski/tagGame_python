@@ -7,15 +7,21 @@ GRAVITY = 0.3
 # PLAYER CONTROLS COMBINATIONS
 PLAYER_CONTROLS = [
     {
+        "type" : "→←↑↓",
+        "keys" : {
             "UP" : pygame.K_UP,
             "DOWN" : pygame.K_DOWN,
             "LEFT" : pygame.K_LEFT,
             "RIGHT" : pygame.K_RIGHT
+        },
     },
     {
+        "type" : "WSAD",
+        "keys" : {
             "UP" : pygame.K_w,
             "DOWN" : pygame.K_s,
             "LEFT" : pygame.K_a,
             "RIGHT" : pygame.K_d
+        },
     },
 ]

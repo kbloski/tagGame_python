@@ -1,5 +1,5 @@
 from utils.clock import CreateClock
-from screen import screen
+from config.screen import screen
 from utils import writeUtils
 
 class ModuleGameTimmer:

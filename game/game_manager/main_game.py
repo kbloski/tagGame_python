@@ -1,4 +1,4 @@
-from screen import screen
+from config.screen import screen
 from utils import writeUtils
 from .players import ModuleGamePlayers
 from .caption import ModuleGameCaptions
@@ -11,8 +11,6 @@ class CreateGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
 
         self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
         self.map = MAP1
-
-
 
     def run(self):
         screen.blit( self.CAPTIONS['title'], [100,30])
