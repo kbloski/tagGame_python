@@ -17,7 +17,10 @@ while True:
             sys.exit()
 
     clock.tick(fps)
-    # print(gameClock.get_fps())
+    
+    # print(clock.get_fps())
+
+
     keys_state.keyboard['refresh']()
     viewManager.render()
     CreateClock.increment( clock.get_time()) 

@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from ...utils import keys_state as inputHandler
+from ...utils.keys_state import isKeyPressed
 from ...utils.measurementUtils import roundNumber
 from ...config import settings
 from  ...utils import surfaceUtils
@@ -41,17 +41,16 @@ class Player:
         return newId
 
     def __setDirection(self):
-        keys = inputHandler.keyboard['keys']
 
         # Change direction
-        if keys[self.controlKeys['UP']] and not self.moveDirection[1]:
+        if isKeyPressed(self.controlKeys['UP']) and not self.moveDirection[1]:
             self.moveDirection[1] = -1
-        elif keys[self.controlKeys['DOWN']] and not self.moveDirection[1]:
+        elif isKeyPressed( self.controlKeys['DOWN']) and not self.moveDirection[1]:
             self.moveDirection[1] = 1
 
-        if keys[self.controlKeys['LEFT']]:
+        if isKeyPressed( self.controlKeys['LEFT']):
             self.moveDirection[0] = -1
-        elif keys[self.controlKeys['RIGHT']]:
+        elif isKeyPressed( self.controlKeys['RIGHT']):
             self.moveDirection[0] = 1
 
         # Clear direction
@@ -62,7 +61,6 @@ class Player:
 
     def __move(self, mapMask, mapPos):
         self.__setDirection()
-        keys = inputHandler.keyboard['keys']
 
         # RESET SPEED
         if self.speed[0] < 0:
@@ -71,7 +69,7 @@ class Player:
             self.speed[1] = 0
 
         # ACCELERATION HORIZONTAL
-        if (keys[self.controlKeys['LEFT']] or keys[self.controlKeys['RIGHT']]):
+        if (isKeyPressed(self.controlKeys['LEFT']) or isKeyPressed(self.controlKeys['RIGHT'])):
             if self.speed[0] < self.maxSpeed[0]:
                 self.speed[0] += self.acceleration
         elif (self.speed[0] > 0):
@@ -99,7 +97,7 @@ class Player:
                 self.speed[1] = 0
 
         # ACCELERATION VERTICALL
-        if (keys[self.controlKeys['UP']]) and self.speed[1] == 0:
+        if (isKeyPressed(self.controlKeys['UP'])) and self.speed[1] == 0:
             self.speed[1] = self.jumpPower
             self.moveDirection[1] = -1
 

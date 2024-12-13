@@ -1,12 +1,13 @@
 import pygame # type: ignore
 
-
-# Tworzymy słownik 'keyboard' z klawiszami i funkcją odświeżającą
 keyboard = {
     'keys': pygame.key.get_pressed(),  
-    'refresh': lambda: updateKeysInKeyboard()   
+    'refresh': lambda: set_key_state()   
 }
 
-def updateKeysInKeyboard():
+def set_key_state():
     keyboard['keys'] = pygame.key.get_pressed()
+
+def isKeyPressed( key ):
+    return keyboard['keys'][key]
 
