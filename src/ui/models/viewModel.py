@@ -8,4 +8,5 @@ class ViewModel:
         pass
 
     def render(self):
+        # Default
         drawSign(screen, "Custom - ViewModel.render(self): function.", [50,50], 25)

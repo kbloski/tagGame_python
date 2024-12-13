@@ -1,10 +1,10 @@
-from ..utils.viewManager import viewManager
-from ..config.screen import screen
-from ..utils import writeUtils
-from .game_manager.players import ModuleGamePlayers
-from .game_manager.caption import ModuleGameCaptions
-from .game_manager.timmer import ModuleGameTimmer
-from .game_manager.map import MAP1
+from ...ui.viewManager import viewManager
+from ...config.screen import screen
+from ...utils import writeUtils
+from .players import ModuleGamePlayers
+from ..caption import ModuleGameCaptions
+from ..timmer import ModuleGameTimmer
+from ..map import MAP1
 
 
 class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
@@ -15,7 +15,8 @@ class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
         self.map = MAP1
 
     def render(self):
-        screen.blit( self.CAPTIONS['title'], [100,30])
+        # screen.blit( self.CAPTIONS['title'], [100,30])
+        
         self.drawTimmer()
 
         for p in self.PLAYERS:

@@ -1,4 +1,4 @@
-from ...utils.viewManager import viewManager
+from ..viewManager import viewManager
 from .game import CreateGame
 from .menu import CreateMenu
 

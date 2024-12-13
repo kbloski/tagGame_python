@@ -34,9 +34,6 @@ class CreateViewManager:
                 self.__activeView = viewName
 
     def render(self):
-        pygame.display.flip()
-        screen.fill( '#99DD00')
-        # if self.__viewExist( self.activeView ):
         if self.__activeView:
             self.views[self.__activeView].render()
 

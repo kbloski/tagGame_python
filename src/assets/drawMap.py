@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from ...config.screen import screen
+from ..config.screen import screen
 
 class CreateMapSurface:
     def __init__(self, width, height):

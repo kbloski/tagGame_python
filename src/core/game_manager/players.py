@@ -1,9 +1,9 @@
 from ...utils import randomUtils
 from ...utils.clock import CreateClock
 from ..characters import player
-from ..characters import drawPlayer
+from ...assets import drawPlayer
 from ...utils import writeUtils
-from .caption import ModuleGameCaptions
+from ..caption import ModuleGameCaptions
 from ...config import settings
 
 class ModuleGamePlayers( ModuleGameCaptions ):
