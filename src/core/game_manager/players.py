@@ -1,15 +1,15 @@
 from ...utils import randomUtils
 from ...utils.clock import CreateClock
 from ..characters import player
-from ...assets import drawPlayer
+from ..graphics.index import player1, player2
 from ...utils import writeUtils
-from ..caption import ModuleGameCaptions
+from .caption import ModuleGameCaptions
 from ...config import settings
 
 class ModuleGamePlayers( ModuleGameCaptions ):
     PLAYERS =  [ 
-        player.Player(drawPlayer.drawCharacter()),
-        player.Player(drawPlayer.drawCharacter()),
+        player.Player(player1),
+        player.Player(player2),
     ]
     def __init__(self):
         super().__init__()

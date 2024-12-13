@@ -1,4 +1,4 @@
-from ...core.game_manager.main_game import MainGame
+from ...core.game_manager.index import MainGame
 from ..models.viewModel import ViewModel
 
 class CreateGame(MainGame, ViewModel):

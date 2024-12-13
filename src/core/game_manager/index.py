@@ -2,9 +2,9 @@ from ...ui.viewManager import viewManager
 from ...config.screen import screen
 from ...utils import writeUtils
 from .players import ModuleGamePlayers
-from ..caption import ModuleGameCaptions
-from ..timmer import ModuleGameTimmer
-from ..map import MAP1
+from .caption import ModuleGameCaptions
+from .timmer import ModuleGameTimmer
+from ..graphics.index import MAP1
 
 
 class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
