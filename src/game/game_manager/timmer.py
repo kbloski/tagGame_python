@@ -1,6 +1,6 @@
-from src.utils.clock import CreateClock
-from src.config.screen import screen
-from src.utils import writeUtils
+from ...utils.clock import CreateClock
+from ...config.screen import screen
+from ...utils import writeUtils
 
 class ModuleGameTimmer:
     def __init__(self):

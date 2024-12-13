@@ -1,10 +1,10 @@
-import src.utils.randomUtils as randomUtils
-from src.utils.clock import CreateClock
-import src.game.characters.player as player
-import src.game.characters.drawPlayer as drawPlayer
-import src.utils.writeUtils as writeUtils
+from ...utils import randomUtils
+from ...utils.clock import CreateClock
+from ...game.characters import player
+from ...game.characters import drawPlayer
+from ...utils import writeUtils
 from .caption import ModuleGameCaptions
-from src.config import settings
+from ...config import settings
 
 class ModuleGamePlayers( ModuleGameCaptions ):
     PLAYERS =  [ 

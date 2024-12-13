@@ -1,6 +1,6 @@
 import pygame # type: ignore
-from src.config.screen import screen
-from errors.error import throwError
+from ..config.screen import screen
+from ..errors.error import throwError
 
 class CreateViewManager:
     __INSTANCE = None
