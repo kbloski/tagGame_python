@@ -1,7 +1,7 @@
 import pygame, sys # type: ignore
 pygame.init()
 
-import src.views as views
+from src.views import index 
 import src.utils.handlerUtils as handlerUtils
 from src.utils.clock import CreateClock
 from src.utils.viewManager import viewManager

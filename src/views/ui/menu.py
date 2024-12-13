@@ -1,5 +1,5 @@
-from ..config.screen import screen
-from ..utils import writeUtils
+from ...config.screen import screen
+from ...utils import writeUtils
 from ..ui.models.viewModel import ViewModel
 
 class CreateMenu( ViewModel ):
