@@ -4,7 +4,7 @@ from ...utils import writeUtils
 from .players import ModuleGamePlayers
 from ..caption import ModuleGameCaptions
 from ..timmer import ModuleGameTimmer
-from ..map import MAP1
+from .map import MAP1
 
 
 class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
