@@ -10,7 +10,7 @@ from src.config.screen import screen
 pygame.display.set_caption('Berek')
 
 clock = pygame.time.Clock()
-fps = 124
+fps = 120
 
 while True:
     for event in pygame.event.get():

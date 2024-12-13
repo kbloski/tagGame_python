@@ -11,4 +11,4 @@ SURFACE.createRamp( 700, 500, 500, 3)
 MAP1 = CreateMap( SURFACE.getMapSurface() )
 
 player1 = drawCharacter()
-player2 = drawCharacter()
+player2 = drawCharacter( '#00ff00')

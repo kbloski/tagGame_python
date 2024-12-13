@@ -17,7 +17,7 @@ class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
     def render(self):
         # screen.blit( self.CAPTIONS['title'], [100,30])
         
-        self.drawTimmer()
+        # self.drawTimmer()
 
         for p in self.PLAYERS:
             p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )
