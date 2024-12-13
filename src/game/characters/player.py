@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from ...utils import handlerUtils as inputHandler
+from ...utils import keys_state as inputHandler
 from ...utils.measurementUtils import roundNumber
 from ...config import settings
 from  ...utils import surfaceUtils

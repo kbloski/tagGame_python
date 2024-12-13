@@ -1,8 +1,8 @@
 import pygame, sys # type: ignore
 pygame.init()
 
-from src.views import index 
-import src.utils.handlerUtils as handlerUtils
+from src.ui.views import index 
+import src.utils.keys_state as keys_state
 from src.utils.clock import CreateClock
 from src.utils.viewManager import viewManager
 
@@ -18,7 +18,7 @@ while True:
 
     clock.tick(fps)
     # print(gameClock.get_fps())
-    handlerUtils.keyboard['refresh']()
+    keys_state.keyboard['refresh']()
     viewManager.render()
     CreateClock.increment( clock.get_time()) 
     
