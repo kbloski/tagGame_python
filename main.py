@@ -1,10 +1,10 @@
 import pygame, sys # type: ignore
 pygame.init()
 
-import view
-import utils.handlerUtils as handlerUtils
-from utils.clock import CreateClock
-from utils.viewManager import viewManager
+import src.views as views
+import src.utils.handlerUtils as handlerUtils
+from src.utils.clock import CreateClock
+from src.utils.viewManager import viewManager
 
 pygame.display.set_caption('Berek')
 

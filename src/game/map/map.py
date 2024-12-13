@@ -1,6 +1,6 @@
 import pygame # type: ignore
-from config.screen import screen
-import utils.surfaceUtils as surfaceUtils
+from src.config.screen import screen
+import src.utils.surfaceUtils as surfaceUtils
 
 class CreateMap:
     def __init__(self, mapSurface):

@@ -1,8 +1,8 @@
 import pygame # type: ignore
-import utils.handlerUtils as inputHandler
-from utils.measurementUtils import roundNumber
-from config import settings
-import utils.surfaceUtils as surfaceUtils
+import src.utils.handlerUtils as inputHandler
+from src.utils.measurementUtils import roundNumber
+from src.config import settings
+import src.utils.surfaceUtils as surfaceUtils
 
 
 

@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from config.screen import screen
+from src.config.screen import screen
 from errors.error import throwError
 
 class CreateViewManager:
