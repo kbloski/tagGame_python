@@ -4,7 +4,8 @@ from ...utils import writeUtils
 from .players import ModuleGamePlayers
 from .caption import ModuleGameCaptions
 from .timmer import ModuleGameTimmer
-from ..graphics.index import MAP1
+from ...graphics.index import map1_surface
+from ..map import CreateMap
 
 
 class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
@@ -12,12 +13,12 @@ class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
         super().__init__()
 
         self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
-        self.map = MAP1
+        self.map = CreateMap( map1_surface )
 
     def render(self):
-        # screen.blit( self.CAPTIONS['title'], [100,30])
+        screen.blit( self.CAPTIONS['title'], [100,30])
         
-        # self.drawTimmer()
+        self.drawTimmer()
 
         for p in self.PLAYERS:
             p.run( self.map.mapSurfaceWithMask[1], self.map.mapPos )

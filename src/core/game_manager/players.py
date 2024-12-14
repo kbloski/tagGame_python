@@ -1,7 +1,7 @@
 from ...utils import randomUtils
 from ...utils.clock import CreateClock
 from ..characters.player import Player
-from ..graphics.index import player1, player2
+from ...graphics.index import player1, player2
 from ...utils import writeUtils
 from .caption import ModuleGameCaptions
 from ...config import settings

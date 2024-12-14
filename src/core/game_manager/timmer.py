@@ -13,6 +13,8 @@ class ModuleGameTimmer:
     def _setRoundTime(self, roundTime = 100):
         self.gameClock.setCountdown( roundTime )
 
+    
+
     def drawTimmer(self):
         writeUtils.drawSign(
             screen,
