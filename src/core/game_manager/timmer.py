@@ -10,12 +10,12 @@ class ModuleGameTimmer:
         self.gameClock.setCountdown( roundTime )
         self.gameClock.start()
 
-        self.sign = drawText.CreateSign( self.gameClock.getTime() , [100, 100])
+        self.sign = drawText.CreateSign( self.gameClock.getCountdownTime() , [100, 100])
 
     def _updateSignSurface(self):
-        savedTime = float( self.sign.innerText )
-        if ( savedTime <  roundNumber( self.gameClock.getTime())):
-            self.sign.updateSign( self.gameClock.getTime())
+        savedTime = int( self.sign.innerText )
+        if (savedTime > self.gameClock.getCountdownTime()):
+            self.sign.updateSign( int( self.gameClock.getCountdownTime() ))
 
     def drawTimmer(self):
         self._updateSignSurface()
