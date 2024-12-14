@@ -2,18 +2,20 @@ import pygame # type: ignore
 
 mouse = {
     'pos' : pygame.mouse.get_pos(),
-    'refresh' : lambda: getMousePos()
+    'refresh' : lambda: _mouseRefresh(),
+    'click' : pygame.mouse.get_pressed()
 }
 
-def getMousePos():
+def _mouseRefresh():
     mouse['pos'] = pygame.mouse.get_pos()
+    mouse['click'] = pygame.mouse.get_pressed()
 
 keyboard = {
     'keys': pygame.key.get_pressed(),  
-    'refresh': lambda: set_key_state()   
+    'refresh': lambda: _setKeyboardState()   
 }
 
-def set_key_state():
+def _setKeyboardState():
     keyboard['keys'] = pygame.key.get_pressed()
 
 def isKeyPressed( key ):
