@@ -1,6 +1,6 @@
 from ...ui.viewManager import viewManager
 from ...config.screen import screen
-from ...utils import writeUtils
+from ...graphics import drawText
 from .players import ModuleGamePlayers
 from .caption import ModuleGameCaptions
 from .timmer import ModuleGameTimmer
@@ -12,7 +12,7 @@ class MainGame( ModuleGamePlayers, ModuleGameCaptions, ModuleGameTimmer):
     def __init__(self):
         super().__init__()
 
-        self.addCaption( 'title' , writeUtils.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
+        self.addCaption( 'title' , drawText.createSignSurface('Wersja testowa alfa aplikacji "Tag GAME"!'))
         self.map = CreateMap( map1_surface )
 
     def render(self):

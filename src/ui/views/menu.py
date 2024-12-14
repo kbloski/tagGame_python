@@ -1,5 +1,5 @@
 from ...config.screen import screen
-from ...utils import writeUtils
+from ...graphics import drawText
 from ..models.viewModel import ViewModel
 
 class CreateMenu( ViewModel ):
@@ -7,4 +7,4 @@ class CreateMenu( ViewModel ):
         pass 
 
     def render(self):
-        writeUtils.drawSign(screen, 'MAIN')
+        drawText.drawSign(screen, 'MAIN')

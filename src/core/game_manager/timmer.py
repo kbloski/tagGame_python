@@ -1,22 +1,22 @@
 from ...utils.clock import CreateClock
 from ...config.screen import screen
-from ...utils import writeUtils
+from ...graphics import drawText
+from ...utils.measurementUtils import roundNumber
 
 class ModuleGameTimmer:
-    def __init__(self):
+    def __init__(self, roundTime = 20):
         self.gameClock = CreateClock()
-        self.gameClock.setCountdown( 20 )
+
+        self.gameClock.setCountdown( roundTime )
         self.gameClock.start()
 
-        self.signHeight = 10
+        self.sign = drawText.CreateSign( self.gameClock.getTime() , [100, 100])
 
-    def _setRoundTime(self, roundTime = 100):
-        self.gameClock.setCountdown( roundTime )
-
-    
+    def _updateSignSurface(self):
+        savedTime = float( self.sign.innerText )
+        if ( savedTime <  roundNumber( self.gameClock.getTime())):
+            self.sign.updateSign( self.gameClock.getTime())
 
     def drawTimmer(self):
-        writeUtils.drawSign(
-            screen,
-            self.gameClock.getCountdownTime(),
-        )
+        self._updateSignSurface()
+        self.sign.draw(screen)

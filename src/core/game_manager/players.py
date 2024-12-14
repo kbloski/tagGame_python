@@ -2,7 +2,7 @@ from ...utils import randomUtils
 from ...utils.clock import CreateClock
 from ..characters.player import Player
 from ...graphics.index import player1, player2
-from ...utils import writeUtils
+from ...graphics import drawText
 from .caption import ModuleGameCaptions
 from ...config import settings
 
@@ -18,7 +18,7 @@ class ModuleGamePlayers( ModuleGameCaptions ):
         self.PLAYERS[1].setControlKeys( settings.PLAYER_CONTROLS[1]['keys'] )
 
         self.addCaption(
-            'tagCaption', writeUtils.createSignSurface("TagPlayer!", 16) 
+            'tagCaption', drawText.createSignSurface("TagPlayer!", 16) 
         )
 
         self.taggerClock = CreateClock()

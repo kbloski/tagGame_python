@@ -19,7 +19,7 @@ while True:
 
     clock.tick(fps)
     
-    print(clock.get_fps())
+    # print(clock.get_fps())
 
 
     keys_state.keyboard['refresh']()
