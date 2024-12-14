@@ -7,7 +7,10 @@ from src.utils.clock import CreateClock
 from src.ui.viewManager import viewManager
 from src.config.screen import screen
 
+from src.graphics.index import mouseSurfaces
+
 pygame.display.set_caption('Berek')
+pygame.mouse.set_visible( False );
 
 clock = pygame.time.Clock()
 fps = 120
@@ -23,10 +26,16 @@ while True:
 
 
     keys_state.keyboard['refresh']()
+    keys_state.mouse['refresh']()
 
     screen.fill('#ffffff')
     viewManager.render()
+    
+    # draw mouse
+    screen.blit( mouseSurfaces['basic'], keys_state.mouse['pos']) 
+
     pygame.display.flip()
+
     
     CreateClock.increment( clock.get_time()) 
     
