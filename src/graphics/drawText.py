@@ -2,13 +2,14 @@
 import pygame # type: ignore
 pygame.init()
 
+DEFAULT_FONT_FAMILY = 'Verdana'
 DEFAULT_SIGN_SIZE = 20
 
 def createSignSurface( 
         text='text-sign', 
         signHeight= DEFAULT_SIGN_SIZE, 
         color='#000000', 
-        fontFamily = "Arial", 
+        fontFamily = "Verdana", 
         antyaliansing=True
     ):
     font = pygame.font.Font(pygame.font.match_font(fontFamily), signHeight)
@@ -22,44 +23,60 @@ def drawSign(
         pos = [0,0],
         signHeight= DEFAULT_SIGN_SIZE, 
         color='#000000', 
-        fontFamily = "Arial", 
+        fontFamily = DEFAULT_FONT_FAMILY, 
         antyaliansing=True
     ):
     surface.blit( createSignSurface(text, signHeight, color, fontFamily, antyaliansing), pos)
 
 
-# class CreateSign:
-#     DEFAULT_SIGN_SIZE = DEFAULT_SIGN_SIZE
+class CreateSign:
+    DEFAULT_SIGN_SIZE = DEFAULT_SIGN_SIZE
 
-#     def __init__(self, text='text-sign', pos = [0,0], signHeight= DEFAULT_SIGN_SIZE, color='#000000', fontFamily="Arial", antyaliansing=True):
-#         self.innerText = text
-#         self.pos = pos
-#         self.signHeight = signHeight
-#         self.color = color
-#         self.fontFamily = fontFamily
-#         self.antyaliansing = antyaliansing
-#         self.surface = self.__createSign()
+    def __init__(
+            self, 
+            text='text-sign', 
+            pos = [0,0], 
+            signHeight= DEFAULT_SIGN_SIZE, 
+            color='#000000', 
+            fontFamily=DEFAULT_FONT_FAMILY, 
+            antyaliansing=True
+        ):
+        self.innerText = text
+        self.pos = pos
+        self.signHeight = signHeight
+        self.color = color
+        self.fontFamily = fontFamily
+        self.antyaliansing = antyaliansing
 
-#     def setPost(self, x, y):
-#         self.pos = [x,y]
+        self.surface = ''
+        self.__createSign()
 
-#     def updateSign(self, text, signHeight, color, fontFamily, antyaliansing):
-#         if text:
-#             self.innerText = text
-#         if signHeight:
-#             self.signHeight = signHeight
-#         if color: 
-#             self.color = color
-#         if fontFamily:
-#             self.fontFamily = fontFamily
-#         if antyaliansing:
-#             self.antyaliansing = antyaliansing
-#         self.__createSign()
+    def setPost(self, x, y):
+        self.pos = [x,y]
 
-#     def __createSign(self):
-#         self.surface = createSignSurface( 'self.innerText', self.signHeight, self.color, self.fontFamily, self.antyaliansing)
+    def updateSign(self, text = '', signHeight = None, color = None, fontFamily = None, antyaliansing = None):
+        if text:
+            self.innerText = text
+        if signHeight:
+            self.signHeight = signHeight
+        if color: 
+            self.color = color
+        if fontFamily:
+            self.fontFamily = fontFamily
+        if antyaliansing:
+            self.antyaliansing = antyaliansing
+        self.__createSign()
+
+    def __createSign(self):
+        self.surface = createSignSurface( 
+            self.innerText, 
+            self.signHeight, 
+            self.color, 
+            self.fontFamily, 
+            self.antyaliansing
+        )
         
-#     def draw(self, surface):
-#         surface.blit( surface, self.pos )
+    def draw(self, surface):
+        surface.blit( self.surface, self.pos )
 
 
