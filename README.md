@@ -1,2 +1,5 @@
-# tagGame_python
-Python, Pygame - gra w berka
+# Tag Game in Python
+
+Technologies: 
+    - Python
+    - Pygame
